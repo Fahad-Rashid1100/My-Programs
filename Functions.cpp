@@ -53,36 +53,20 @@ int main()
 
 float sum(float a, float b)
 {
-    float sum;
-
-    sum = a  + b;
-
-    return(sum);
+    return a+b;
 }
 
 float subtract(float a, float b)
 {
-    float subtract;
-
-    subtract = a - b;
-
-    return(subtract);
+    return a-b;
 }
 
 float product(float a, float b)
 {
-    float product;
-
-    product = a * b;
-
-    return(product);
+    return a*b;
 }
 
 float divide(float a, float b)
 {
-    float divide;
-
-    divide = a / b;
-
-    return(divide);
+    return a/b;
 }
