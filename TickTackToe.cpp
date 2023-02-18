@@ -62,12 +62,67 @@ char** setGridSize(int size)
 
         for(int c = 0 ; c < size ; c++)
         {
-            grid[r][c] = '-';
+            grid[r][c] = ' ';
         }
     }
 
     return grid;
 }
+
+
+void gameStart(char** grid, int s, char c)
+{
+    int r = 0, col = 0; 
+    char input; 
+    
+    while (true) {
+        
+        for(int i = 0 ; i < s ; i++)
+        {
+            for(int j  = 0 ; j < s ; j++)
+            {
+                if (i == r && j == col) {
+                    cout << "[" << grid[i][j] << "]";
+                } else {
+                    cout << " " << grid[i][j] << " ";
+                }
+                if(j != s-1)
+                {
+                    cout << "|";
+                }
+            }
+            cout << endl;
+            if(s-1 != i)
+            {
+                cout << string(s*4-1, '-');
+            }
+            cout << endl;
+        }
+        
+        cin >> input;
+        if (input == 'w' && r > 0) 
+        {
+            r--;
+        } 
+        else if (input == 's' && r < s-1) 
+        {
+            r++;
+        } 
+        else if (input == 'a' && col > 0) 
+        {
+            col--;
+        } 
+        else if (input == 'd' && col < s-1) 
+        {
+            col++;
+        } 
+        else 
+        {
+            continue;
+        }
+    }
+}
+
 
 
 int main()
@@ -91,22 +146,5 @@ int main()
 
     grid = setGridSize(s); 
 
-    for(int r = 0 ; r < s ; r++)
-    {
-        for(int c  = 0 ; c < s ; c++)
-        {
-            cout << " " << grid[r][c] << " ";
-            if(c != s-1)
-            {
-                cout << "|";
-            }
-        }
-        cout << endl;
-        
-        if(s-1 != r)
-        {
-            cout << string(11, '-');
-        }
-        cout << endl;
-    }
+    gameStart(grid, s, character);
 }
