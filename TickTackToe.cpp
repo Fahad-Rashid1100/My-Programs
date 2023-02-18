@@ -54,17 +54,19 @@ int getSize()
 
 char** setGridSize(int size)
 {
-    char **grid[size][size];
+    char** grid = new char*[size];
 
     for(int r = 0 ; r < size ; r++)
     {
+        grid[r] = new char[size];
+
         for(int c = 0 ; c < size ; c++)
         {
-            **grid[r][c] = 'A';
+            grid[r][c] = '-';
         }
     }
 
-    return **grid;
+    return grid;
 }
 
 
@@ -85,7 +87,26 @@ int main()
     character = chooseChar();
     s = getSize();
 
-    char **grid[s][s];
+    char** grid;
 
-    grid[s][s] = setGridSize(s);  
+    grid = setGridSize(s); 
+
+    for(int r = 0 ; r < s ; r++)
+    {
+        for(int c  = 0 ; c < s ; c++)
+        {
+            cout << " " << grid[r][c] << " ";
+            if(c != s-1)
+            {
+                cout << "|";
+            }
+        }
+        cout << endl;
+        
+        if(s-1 != r)
+        {
+            cout << string(11, '-');
+        }
+        cout << endl;
+    }
 }
